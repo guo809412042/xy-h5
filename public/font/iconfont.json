@@ -1,0 +1,86 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "573575",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "589319",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e70c",
+      "unicode_decimal": 59148
+    },
+    {
+      "icon_id": "1048891",
+      "name": "关闭",
+      "font_class": "icon_close",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "1063464",
+      "name": "关闭",
+      "font_class": "iconclose",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "4734118",
+      "name": "关闭",
+      "font_class": "ic_close",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "6204091",
+      "name": "关  闭",
+      "font_class": "guanbi1",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "6263352",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "10070969",
+      "name": "分享",
+      "font_class": "icon-test",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "14491187",
+      "name": " _关闭",
+      "font_class": "tubiaolunkuohua_guanbi-100",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "18522211",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "21585917",
+      "name": "放大",
+      "font_class": "fangda",
+      "unicode": "e6cc",
+      "unicode_decimal": 59084
+    }
+  ]
+}

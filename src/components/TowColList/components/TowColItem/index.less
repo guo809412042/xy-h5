@@ -1,0 +1,46 @@
+.towColItem {
+  width: 160px;
+  padding: 0 4px;
+  // border: 1px salmon solid;
+  & > .itemWraper {
+    width: 160px;
+    height: 160px;
+    background-color: #eee;
+    border-radius: 8px;
+    & > .item {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      & > img {
+        display: block;
+        width: 160px;
+        height: 160px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+      & > .enlargeButtonWrapp {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        color: white;
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        & > span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  & > .text {
+    padding: 4px 0 16px 4px;
+    height: 20px;
+    line-height: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #cccccc;
+  }
+}
