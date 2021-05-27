@@ -27,18 +27,30 @@ function Index(props) {
       false
     );
 
+    // const res = audio.current.paused ? false : true;
+    // setIsPlay(res);
     // console.log(audio.current.duration);
   });
 
   // 播放 暂停的功能
   const handleClick = () => {
-    setIsPlay(!isPlay);
-    // 如果是播放状态的话
-    if (isPlay) {
+    // setIsPlay(!isPlay);
+    // // 如果是播放状态的话
+    // if (isPlay) {
+    //   // 暂停
+    //   audio.current.pause();
+    // } else {
+    //   // 继续播放
+    //   audio.current.play();
+    // }
+
+    if (!audio.current.paused) {
+      setIsPlay(false);
       // 暂停
       audio.current.pause();
     } else {
       // 继续播放
+      setIsPlay(true);
       audio.current.play();
     }
   };

@@ -79,14 +79,23 @@ function Index() {
   // 播放和暂停
   const handleClick = () => {
     if (video.current !== null) {
-      setIsPlay(!isPlay);
+      // setIsPlay(!isPlay);
       const mp4 = video.current;
       // 如果是播放状态的话
-      if (isPlay) {
+      // if (isPlay) {
+      //   // 暂停
+      //   mp4.pause();
+      // } else {
+      //   // 继续播放
+      //   mp4.play();
+      // }
+      if (!mp4.paused) {
+        setIsPlay(false);
         // 暂停
         mp4.pause();
       } else {
         // 继续播放
+        setIsPlay(true);
         mp4.play();
       }
     }

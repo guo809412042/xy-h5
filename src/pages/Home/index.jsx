@@ -12,6 +12,7 @@ function Index() {
   const [isShowModel, setIsShowModel] = useState(false);
   const [modelData, setModelData] = useState();
   const main = createRef();
+
   const list = {
     title: "Theme",
     data: [
@@ -467,8 +468,10 @@ function Index() {
       },
     ],
   };
+  // 显示弹出框
   const setShowModelView = (data) => {
     setIsShowModel(!isShowModel);
+    // 传入弹出框要显示的数据
     setModelData(data);
   };
   const init = () => {

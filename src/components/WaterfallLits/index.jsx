@@ -8,20 +8,25 @@ function Index(props) {
   const wrapper = createRef();
   const init = () => {
     const items = context.current.children;
+    // 当前瀑布流容器的宽度
     const pageW = parseFloat(getComputedStyle(WaterfallList.current)["width"]);
+    // 瀑布流容器的左右边距
     const padding =
       parseFloat(getComputedStyle(WaterfallList.current)["paddingLeft"]) * 2;
+    // 瀑布流中每一个item的宽
     const itemWidth = parseFloat(getComputedStyle(items[0])["width"]);
     // 瀑布流的列数
     const columns = parseInt(pageW / itemWidth);
     // 保存所有item的高度的数组
     const heightArr = [];
     for (let i = 0; i < items.length; i++) {
+      // 先确定第一行显示的位置
       if (i < columns) {
         items[i].style.top = 0;
         items[i].style.left = `${itemWidth * i}px`;
         heightArr.push(parseFloat(getComputedStyle(items[i])["height"]));
       } else {
+        // 除了第一行剩余的 item 位置
         const minHeight = Math.min(...heightArr);
         const index = heightArr.indexOf(minHeight);
         items[i].style.top = `${heightArr[index]}px`;
@@ -31,11 +36,13 @@ function Index(props) {
           Math.ceil(parseFloat(getComputedStyle(items[i])["height"]));
       }
     }
+    // 设置瀑布流容器的宽高  因为所有的item都脱离了文档流容器没有高度 下面还有DOM 元素的话位置会发生错乱
     context.current.style.height = `${Math.ceil(Math.max(...heightArr))}px`;
     context.current.style.width = `${pageW - padding}px`;
   };
 
   useEffect(() => {
+    // 图片加载比较慢
     window.onload = function () {
       init();
     };

@@ -29,16 +29,25 @@ function Index() {
       },
       false
     );
-  });
+  }, []);
   const handleClick = () => {
-    setIsPlay(!isPlay);
+    // setIsPlay(!isPlay);
     const mp4 = video.current;
     // 如果是播放状态的话
-    if (isPlay) {
+    // if (isPlay) {
+    //   // 暂停
+    //   mp4.pause();
+    // } else {
+    //   // 继续播放
+    //   mp4.play();
+    // }
+    if (!mp4.paused) {
+      setIsPlay(false);
       // 暂停
       mp4.pause();
     } else {
       // 继续播放
+      setIsPlay(true);
       mp4.play();
     }
   };
@@ -49,7 +58,7 @@ function Index() {
           {/* "https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20200306%2F319d7254fa4545e9abec65a4a0d29790.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624509964&t=971a89e7d2da4faec1cdfc15ded10f70" */}
           <video
             ref={video}
-            src="../1111.mp4"
+            src="../12321.mp4"
             poster="https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20200306%2F319d7254fa4545e9abec65a4a0d29790.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624509964&t=971a89e7d2da4faec1cdfc15ded10f70"
             webkit-playsinline="true"
             playsInline={true}
