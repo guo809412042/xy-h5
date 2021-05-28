@@ -1,7 +1,9 @@
 import React, { useEffect, useState, createRef } from "react";
 import styles from "./index.less";
+import { inject, observer } from "mobx-react";
 
-function Index() {
+function Index(props) {
+  const { store } = props;
   const [isPlay, setIsPlay] = useState(false);
   const video = createRef();
   useEffect(() => {
@@ -18,7 +20,7 @@ function Index() {
     //   ctx.drawImage(this,0,0, width,heitght)
     //   console.log(ctx)
     //   const src = canvas.toDataURL('image/jpeg');
-    //   seti(src)
+    //   console.log(src)
     // }
 
     // 监听是否播放完成
@@ -30,7 +32,9 @@ function Index() {
       false
     );
   }, []);
+
   const handleClick = () => {
+    store.setPlayState(true);
     // setIsPlay(!isPlay);
     const mp4 = video.current;
     // 如果是播放状态的话
@@ -51,12 +55,17 @@ function Index() {
       mp4.play();
     }
   };
+
+  useEffect(() => {
+    console.log(store.isPlay);
+  }, [store.isPlay]);
   return (
     <div className={styles.headerVideoViewWrapper}>
       <div className={styles.videoViewWrapper}>
         <div className={styles.videoWrapper} onClick={handleClick}>
           {/* "https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20200306%2F319d7254fa4545e9abec65a4a0d29790.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624509964&t=971a89e7d2da4faec1cdfc15ded10f70" */}
           <video
+            data-isstop={isPlay}
             ref={video}
             src="../12321.mp4"
             poster="https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20200306%2F319d7254fa4545e9abec65a4a0d29790.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624509964&t=971a89e7d2da4faec1cdfc15ded10f70"
@@ -90,4 +99,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default inject((store) => store)(observer(Index));

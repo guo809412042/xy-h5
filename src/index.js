@@ -3,12 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./pages/Home";
 // import App from "./components/ModelView/components/BigView";
-
+import { Provider } from 'mobx-react';
+import Store from './store';
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
+   <Provider store={Store}>
     <App />
+   </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

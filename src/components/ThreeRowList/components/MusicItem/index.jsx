@@ -1,8 +1,11 @@
 import React, { useEffect, useState, createRef } from "react";
 import moment from "moment";
 import styles from "./index.less";
+
+import { inject, observer } from "mobx-react";
+
 function Index(props) {
-  const { itemData } = props;
+  const { itemData, store } = props;
   const [timer, setTimer] = useState();
   const [isPlay, setIsPlay] = useState(false);
   const audio = createRef();
@@ -43,7 +46,6 @@ function Index(props) {
     //   // 继续播放
     //   audio.current.play();
     // }
-
     if (!audio.current.paused) {
       setIsPlay(false);
       // 暂停
@@ -90,4 +92,4 @@ function Index(props) {
   );
 }
 // icon-zanting
-export default Index;
+export default inject((store) => store)(observer(Index));

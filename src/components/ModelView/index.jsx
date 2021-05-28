@@ -3,6 +3,8 @@ import React, { useEffect, createRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import SwiperItemView from "./components/SwiperItemView";
+
+import { cloesAllMedia } from "../../utils/tools";
 // Import Swiper styles
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
@@ -63,16 +65,7 @@ function Index(props) {
     const currentIndex = e.realIndex + 1;
     setPage(`${currentIndex}/${data.data.length}`);
 
-    // 滑动轮播的时候 暂停所有的媒体播放
-    // 有个BUG  暂停的媒体 目前没有想到好的办法显示 再次播放的图标
-    // let medias;
-    // const videos = document.querySelectorAll("video");
-    // const audios = document.querySelectorAll("audio");
-    // medias = [...videos, ...audios];
-    // medias.forEach((media) => {
-    //   media.pause();
-    //   // console.log(media.paused);
-    // });
+    cloesAllMedia();
   };
   return (
     <div ref={share} className={styles.shareWrapper} onClick={(e) => close(e)}>

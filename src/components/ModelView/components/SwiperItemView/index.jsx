@@ -3,11 +3,14 @@ import styles from "./index.less";
 
 function Index() {
   const [isPlay, setIsPlay] = useState(false);
+  const [sizeType, setSizeType] = useState();
   const mediaWrapper = createRef();
   const video = createRef();
   const img = createRef();
   // 初始化
   const init = async () => {
+    const winW = window.innerWidth;
+    console.log(winW);
     // 设置视频尺寸
     if (video.current !== null) {
       // 监听是否播放完成
@@ -24,8 +27,8 @@ function Index() {
       // 比例大于 一比一
       if (videoH / videoW > 1) {
         console.log(1111);
-        video.current.style.height = `${videoH * 0.7}px`;
-        video.current.style.width = `${videoW * 0.7}px`;
+        video.current.style.height = `${winW * 0.7}px`;
+        video.current.style.width = `${winW * 0.7}px`;
         console.log(video.current.style.height, video.current.style.width);
         // 比例小于 一比一
       } else if (videoH / videoW < 1) {
@@ -48,19 +51,24 @@ function Index() {
       // const media = mediaWrapper.current;
       // 获取图片的尺寸
       const { imgW, imgH } = await getImageSize(img.current);
+      console.log(imgH, imgW);
       // 比例大于 一比一
       if (imgH / imgW > 1) {
         console.log(333);
-        // imgDom.style.height = `${imgH * 0.7}px`;
-        imgDom.style.width = `${imgW * 0.7}px`;
+        // imgDom.style.height = `${winW * 0.7}px`;
+        imgDom.style.width = `${winW * 0.7}px`;
+        console.log(winW * 0.7);
       } else if (imgH / imgW < 1) {
         console.log(2222);
         // media.style.width = `${window.innerWidth - 32}px`;
-        imgDom.style.width = `${window.innerWidth - 32}px`;
+        imgDom.style.width = `${winW - 32}px`;
         // mediaWrapper.current.style.padding = "0 16px 0 16px";
       } else if (imgH / imgW === 1) {
-        imgDom.style.height = `328px`;
-        imgDom.style.width = `328px`;
+        // imgDom.style.height = `328px`;
+        // imgDom.style.width = `328px`;
+
+        // 使用class 来控制尺寸这样可以 适配各种屏幕的尺寸
+        setSizeType(1);
       }
     }
   };
@@ -106,9 +114,10 @@ function Index() {
   return (
     <div className={styles.medieWrapper} ref={mediaWrapper}>
       {/* 加入判断条件 是图片还是视频 */}
-      {true ? (
+      {false ? (
         <div className={styles.videoWrapper} onClick={handleClick}>
           <video
+            data-isstop={isPlay}
             ref={video}
             src="../12321.mp4"
             // 默认显示图片
@@ -129,8 +138,9 @@ function Index() {
         <div className={styles.imageWrapper}>
           <img
             ref={img}
-            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcdn.play.cn%2Ff%2Fpkg%2Fph%2Fview%2Fsmall%2F000%2F003%2F735%2F27f28abbh38feabf.jpg&refer=http%3A%2F%2Fcdn.play.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624604958&t=725dcd47e1fa68b0c7936a2534a68175"
+            src="../11.jpeg"
             alt=""
+            className={sizeType === 1 ? `${styles.img}` : ""}
           />
         </div>
       )}
